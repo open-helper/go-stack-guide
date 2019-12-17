@@ -1,5 +1,6 @@
-data/
-log/
+## 数据目录
+data
+log
 
 
 # Binaries for programs and plugins
