@@ -1,3 +1,17 @@
+# Project Generated
+# docker/
+log/
+backup/
+dist/
+
+# repo(auto gen)
+src/repo
+src/topics
+
+# prod
+conf/env.d/*-prod.env
+
+
 # Binaries for programs and plugins
 *.exe
 *.exe~
