@@ -7,8 +7,8 @@
 # ####################################
 # Dashboard AREA
 # ####################################
-start: start-sv
-stop: stop-sv
+up: start-sv
+down: stop-sv
 status: status-sv
 ctl: ctl-sv
 demo: start-client
@@ -22,7 +22,7 @@ start-client:
 # ####################################
 start-etcd-fg:
 	etcd --debug  --name=default --data-dir=/tmp/default.etcd --listen-client-urls http://0.0.0.0:12379 --advertise-client-urls http://0.0.0.0:12380
-start-server-fg:	
+start-server-fg:
 	go run server.go plugins.go --registry=etcdv3 --registry_address=127.0.0.1:12379
 
 
