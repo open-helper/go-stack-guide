@@ -13,6 +13,8 @@ ifdef MSG
 	GUP_MSG = "$(MSG)"
 endif
 
+BUDDY_LOG_DIR := log/00-buddy
+
 
 # ####################################
 # Dashboard AREA
@@ -32,6 +34,15 @@ build:
 		echo "$$x/Makefile"; \
 		[ -f "$$x/Makefile" ] && make build -C "$$x" || true; \
 	done;
+
+auto-merge: $(BUDDY_LOG_DIR)
+	inotifywait -mrq --timefmt "%Y%m%d-%H:%M" --format="%T|%w|%f|%e" -e modify,delete,create,attrib $(CURDIR)/src/buddy | while read x; do \
+		echo "$$x" >> $(BUDDY_LOG_DIR)/buddy-up.log; \
+		make -C . merge; \
+	done;
+
+$(BUDDY_LOG_DIR):
+	mkdir -p $@
 
 
 # ####################################
